@@ -2,20 +2,17 @@ package core
 
 import "errors"
 
-type OrderService interface {
-	CreateOrder(order Order) error
-}
-
 // Represent to business logic core
-type orderServiceImpl struct {
+type orderService struct {
+	OrderService
 	repo OrderRepository
 }
 
 func NewOrderService(repo OrderRepository) OrderService {
-	return &orderServiceImpl{repo: repo}
+	return &orderService{repo: repo}
 }
 
-func (s *orderServiceImpl) CreateOrder(order Order) error {
+func (s *orderService) CreateOrder(order Order) error {
 	// Business logic function
 	if order.Total <= 0 {
 		return errors.New("total must be positive")
