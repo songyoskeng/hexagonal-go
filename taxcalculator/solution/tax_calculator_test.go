@@ -3,8 +3,8 @@ package solution
 import "testing"
 
 func TestTaxCalculator(t *testing.T) {
-	fromTaxRateRepository := &TaxRateRepository{}
-	taxCalculator := NewTaxCalculator(fromTaxRateRepository)
+	taxRepository := NewTaxRateRepository()
+	taxCalculator := NewTaxCalculator(taxRepository)
 	tax := taxCalculator.CalculateTax(10000)
 
 	if tax != 1000 {
