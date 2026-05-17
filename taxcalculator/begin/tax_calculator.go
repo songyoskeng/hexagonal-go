@@ -2,14 +2,14 @@ package begin
 
 type TaxCalculator struct {
 	ForCalculateTax
+	forGetTaxRate ForGetTaxRate
 }
 
-func NewTaxCalculator() *TaxCalculator {
-	return &TaxCalculator{}
+func NewTaxCalculator(forGetTaxRate ForGetTaxRate) *TaxCalculator {
+	return &TaxCalculator{forGetTaxRate: forGetTaxRate}
 }
 
 func (c *TaxCalculator) CalculateTax(salary float64) float64 {
-	taxRepository := &TaxRateRepository{}
-	taxRate := taxRepository.GetTaxRateFrom(salary)
+	taxRate := c.forGetTaxRate.GetTaxRateFrom(salary)
 	return salary * taxRate
 }
