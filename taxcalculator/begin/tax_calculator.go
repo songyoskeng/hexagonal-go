@@ -1,6 +1,12 @@
 package begin
 
-type TaxCalculator struct{}
+type TaxCalculator struct {
+	ForCalculateTax
+}
+
+func NewTaxCalculator() *TaxCalculator {
+	return &TaxCalculator{}
+}
 
 func (c *TaxCalculator) CalculateTax(salary float64) float64 {
 	taxRepository := &TaxRateRepository{}
