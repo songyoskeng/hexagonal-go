@@ -1,6 +1,12 @@
 package begin
 
-type TaxRateRepository struct{}
+type TaxRateRepository struct {
+	ForGetTaxRate
+}
+
+func NewTaxRateRepository() *TaxRateRepository {
+	return &TaxRateRepository{}
+}
 
 func (r *TaxRateRepository) GetTaxRateFrom(salary float64) float64 {
 	if salary < 10001 {
